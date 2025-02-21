@@ -1,0 +1,274 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #15582f;
+  color: white;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  position: relative;
+}
+
+header h1 {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+header::after {
+  content: '';
+  display: block;
+  background-color: #15582f;
+  height: 0.3rem;
+  width: 100%;
+  position: absolute;
+  bottom: -0.6rem;
+  left: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 1750px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.main-article {
+  grid-column: 1 / 2;
+  align-self: start;
+  position: relative;
+}
+
+.main-article::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -0.5rem;
+  bottom: -10.5rem;
+  width: 1px;
+  background-color: black;
+}
+
+.main-article img {
+  width: 100%;
+  height: auto;
+}
+
+.main-article h2 {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.small-articles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  grid-column: 2 / 3;
+  align-items: center;
+  position: relative;
+}
+
+.small-articles::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  bottom: 0.5rem;
+  width: 1px;
+  background-color: black;
+}
+
+.small-article {
+  padding: 1rem;
+  text-align: center;
+  align-self: start;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.small-article::before {
+  content: '';
+  position: absolute;
+  top: -0.5rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: black;
+}
+
+.small-article h2 {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.small-article img {
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.small-article p {
+  font-size: 0.875rem;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.arrow svg {
+  width: 24px;
+  height: 24px;
+}
+
+.small-article:hover h2,
+.small-article:hover p,
+.small-article:hover .arrow svg,
+.main-article:hover h2,
+.main-article:hover p,
+.main-article:hover .arrow svg {
+  color: grey;
+  fill: grey;
+}
+
+@media (min-width: 1025px) {
+  .small-article img {
+    display: none;
+  }
+
+  .imageshowing .small-article img {
+    display: block;
+  }
+}
+
+/* tab and desktop portrait */
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .container {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "main-article right-column"
+      "bottom-left bottom-right";
+    position: relative;
+  }
+
+  .container::before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    bottom: 1rem;
+    left: calc(66.67% - 0.5rem);
+    width: 1px;
+    background-color: black;
+  }
+
+  .main-article {
+    grid-area: main-article;
+  }
+
+  .main-article p {
+    margin-top: 25px;
+  }
+
+  .main-article svg {
+    margin-top: 150px;
+  }
+
+  .small-articles {
+    display: contents;
+  }
+
+  .small-article:nth-child(1) {
+    grid-area: right-column;
+  }
+
+  .small-article:nth-child(2) {
+    grid-area: bottom-left;
+  }
+
+  .small-article:nth-child(3) {
+    grid-area: bottom-right;
+  }
+
+  .small-articles::before {
+    display: none;
+  }
+
+  .main-article::before {
+    display: none;
+  }
+
+  .small-article {
+    padding: 0.5rem;
+  }
+
+  .small-article img {
+    width: 100%;
+    display: block;
+  }
+
+  .main-article h2 {
+    font-size: 1.25rem;
+  }
+
+  .main-article p {
+    font-size: 1rem;
+  }
+}
+
+/* phone */
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .main-article {
+    grid-column: 1 / 2;
+    align-self: start;
+    position: relative;
+  }
+
+  .main-article::before {
+    display: none;
+  }
+
+  .main-article p {
+    font-size: 0.875rem;
+    margin: 0 20px;
+    margin-top: 15px;
+  }
+
+  .main-article svg {
+    margin-bottom: 1rem;
+  }
+
+  .small-articles {
+    grid-template-columns: 1fr;
+    grid-column: 1 / 2;
+  }
+
+  .small-articles::before {
+    display: none;
+  }
+
+  .small-article {
+    margin-bottom: 1.5rem;
+  }
+
+  .small-article img {
+    width: 100%;
+  }
+}
